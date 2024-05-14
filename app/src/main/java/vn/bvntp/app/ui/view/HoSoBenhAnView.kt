@@ -46,7 +46,7 @@ import androidx.compose.ui.unit.sp
 import com.example.ntp_app.primaryLight
 import vn.bvntp.app.helper.storeEncryptedData
 import vn.bvntp.app.ui.activity.LoginActivity
-import vn.bvntp.app.ui.activity.PdfViewerActivity
+import vn.bvntp.app.ui.activity.PdfViewer
 import vn.bvntp.app.viewmodel.HoSoBenhAnViewModel
 
 
@@ -208,7 +208,7 @@ fun HoSoBenhAnView(
                                     ) {
 
                                         val intent = Intent(
-                                            context, PdfViewerActivity::class.java
+                                            context, PdfViewer::class.java
                                         )
 
                                         intent.putExtra(

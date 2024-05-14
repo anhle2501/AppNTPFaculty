@@ -1,6 +1,7 @@
 package vn.bvntp.app
 
 import android.app.Application
+//import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -14,6 +15,7 @@ class App : Application(){
     override fun onCreate() {
         super.onCreate()
         container = AppContainer()
+//        PDFBoxResourceLoader.init(getApplicationContext());
 
 
 

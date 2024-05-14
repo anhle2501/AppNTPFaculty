@@ -2,8 +2,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
+//    kotlin("kapt")
+//    id("com.google.dagger.hilt.android")
 
 }
 
@@ -98,8 +98,8 @@ dependencies {
     implementation ("androidx.navigation:navigation-compose:$nav_version")
 
 
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-compiler:2.44")
+//    implementation("com.google.dagger:hilt-android:2.44")
+//    kapt("com.google.dagger:hilt-compiler:2.44")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
@@ -114,23 +114,40 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 
     // asyn image
-    implementation("io.coil-kt:coil-compose:2.6.0")
+//    implementation("io.coil-kt:coil-compose:2.6.0")
     // pdf viewer
-    implementation("io.github.grizzi91:bouquet:1.1.2")
+//    implementation("io.github.grizzi91:bouquet:1.1.2")
+    implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
 
-    implementation("io.github.afreakyelf:Pdf-Viewer:2.1.1")
 
+
+
+//    implementation("io.github.afreakyelf:Pdf-Viewer:2.1.1")
+
+//    implementation("com.itextpdf:itextpdf:5.5.3")
+//    implementation("com.artifex.mupdf:fitz:1.22.0")
+//    implementation("org.apache.pdfbox:pdfbox:2.0.27")
+
+//    implementation("com.github.barteksc:android-pdf-viewer:3.2.0-beta.1")
+
+//    implementation("com.syncfusion:flutter_pdfviewer:2.11.338")
+
+//    implementation("com.tom-roush:pdfbox-android:2.0.0.27")
+//    implementation("com.gemalto.jp2:jp2-android:1.0.3")
+//    implementation("com.github.jai-imageio:jai-imageio-jpeg2000:1.4.0")
+//    implementation("com.github.jai-imageio:jai-imageio-core:1.4.0")
+//    implementation("com.twelvemonkeys.imageio:imageio-jpeg:3.10.1")
 
 
 
 }
 
 
-
-kapt {
-    correctErrorTypes = true
-}
-
-hilt {
-    enableAggregatingTask = true
-}
+//
+//kapt {
+//    correctErrorTypes = true
+//}
+//
+//hilt {
+//    enableAggregatingTask = true
+//}

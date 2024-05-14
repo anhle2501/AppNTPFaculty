@@ -21,15 +21,14 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.savedstate.SavedStateRegistryOwner
-import dagger.Module
-import dagger.hilt.InstallIn
+
 import kotlinx.coroutines.launch
 import vn.bvntp.app.MainActivity
 import vn.bvntp.app.model.UserLoginInfo
 import vn.bvntp.app.network.RetrofitClient
 import vn.bvntp.app.repository.UserRepository
 import vn.bvntp.app.ui.activity.LoginActivity
-import javax.inject.Inject
+
 
 enum class LoginStatus{ Success, Failed, NotYetLogin}
 

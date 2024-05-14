@@ -17,7 +17,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.savedstate.SavedStateRegistryOwner
 import com.example.ntp_app.ui.theme.AppNTPTheme
-import dagger.hilt.android.AndroidEntryPoint
+
 import vn.bvntp.app.App
 import vn.bvntp.app.helper.hasAccessToken
 import vn.bvntp.app.model.UserLoginInfo
@@ -26,7 +26,7 @@ import vn.bvntp.app.repository.UserRepository
 import vn.bvntp.app.ui.view.LoginView
 import vn.bvntp.app.viewmodel.LoginViewModel
 import vn.bvntp.app.viewmodel.LoginViewModelFactory
-import javax.inject.Inject
+
 
 
 

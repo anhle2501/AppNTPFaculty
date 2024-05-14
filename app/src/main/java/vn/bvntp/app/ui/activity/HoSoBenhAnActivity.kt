@@ -4,7 +4,7 @@ package vn.bvntp.app.ui.activity
 
 
 
-import PDFReader
+
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -35,10 +35,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.ntp_app.ui.theme.AppNTPTheme
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
-import com.rizzi.bouquet.ResourceType
-import com.rizzi.bouquet.VerticalPDFReader
-import com.rizzi.bouquet.dp
-import com.rizzi.bouquet.rememberVerticalPdfReaderState
 
 import vn.bvntp.app.App
 

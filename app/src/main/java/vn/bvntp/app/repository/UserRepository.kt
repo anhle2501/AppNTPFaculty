@@ -4,10 +4,6 @@ package vn.bvntp.app.repository
 import android.app.Application
 import android.content.Context
 import android.util.Log
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,8 +12,7 @@ import vn.bvntp.app.helper.storeEncryptedData
 import vn.bvntp.app.model.LoginResponse
 import vn.bvntp.app.model.UserLoginInfo
 import vn.bvntp.app.ui.activity.LoginActivity
-import javax.inject.Inject
-import javax.inject.Singleton
+
 
 class UserRepository (val apiService: UserService) {
 
