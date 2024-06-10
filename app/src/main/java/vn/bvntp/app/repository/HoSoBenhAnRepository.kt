@@ -2,7 +2,6 @@ package vn.bvntp.app.repository
 
 import android.content.Context
 import android.util.Log
-import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -18,7 +17,6 @@ import vn.bvntp.app.api.HoSoBenhAnService
 import vn.bvntp.app.helper.retrieveAccessDataDecryptedData
 import vn.bvntp.app.model.LichSuDieuTriResponse
 import vn.bvntp.app.model.RequestLichSuDieuTri
-import vn.bvntp.app.model.Test
 import java.io.BufferedInputStream
 import java.io.BufferedOutputStream
 import java.io.File
@@ -89,153 +87,27 @@ class HoSoBenhAnRepository(val hoSoBenhAnService: HoSoBenhAnService) {
             fileOutput.close()
             jsonString.close()
             response?.close()
-
-            Log.d("file", file.absolutePath.toString())
             onResult(Result.success(file))
-//            Log.d("response", response!!.string())
-//            val byteSteam = response?.byteStream();
-//
-//            val contentLength = response?.contentLength();
-//            Log.d("contentLength", contentLength.toString())
-//            val outputStream = FileOutputStream(file);
-//            val baos = ByteArrayOutputStream()
-//
-//
-//            var n =-1
-//            val buffer = ByteArray(4096);
 
-//            var numberOfByte = 0.toLong();
-//            while (contentLength != null) {
-//                Log.d("in loop", "in loop")
-//                // 1st read, dont read 38 byte
-//                n = byteSteam!!.read(buffer, 0, buffer.size)
-//                Log.d("n", n.toString())
-//                if ( n == -1) {
-//                    break;
-//                }
-//
-//                if (numberOfByte == 0L) {
-////                    baos.write(buffer, 38, n - 38)
-//
-//                    outputStream.write(buffer, 38, n - 38)
-////                    outputStream.write(baos.toByteArray())
-//
-//                } else if ( (contentLength - numberOfByte) <= 4096.toLong() ){
-////                    baos.write(buffer, 0, n - 10)
-//                    outputStream.write(buffer, 0, n - 10)
-////                    outputStream.write(baos.toByteArray())
-//                } else {
-////                    baos.write(buffer, 0, n)
-//
-//                    outputStream.write(buffer, 0, n)
-////                    outputStream.write(baos.toByteArray())
-//                }
-//                numberOfByte += n
-//
-//
-//                Log.d("end loop", "end loop")
-//
-//            }
-
-
-
-//            byteSteam?.close()
-
-//
-//            if (byteStream != null) {
-//                byteStream.close()
-//            }
-
-//            outputStream.close()
-//
-//            inputStream2.close()
-//            outputStream2.close()
-
-//            if (response.isSuccessful) {
-//                Log.d("response.message", response.message)
-//                Log.d("response", response.code.toString())
-//                val a = response.body?.string()
-
-
-//                val inputStream = response.body?.byteStream()
-//                val bufferSize = 8 * 1024;
-//                val reader = BufferedReader(InputStreamReader(inputStream), bufferSize)
-//
-//                var test = reader.lineSequence().iterator();
-//                Log.d("test.hasNext()", test.hasNext().toString())
-//                val test = reader.lineSequence().iterator();
-//                while (test.hasNext()) {
-//                    val line = test.next();
-//                    Log.d("line", line)
-//                }
-
-//                reader.useLines {
-//                    it.map { line ->
-//                        Log.d("est", "test ")
-//                        Log.d("line", line)}
-//                }
-
-//                reader.close()
-
-
-
-
-//                val jsonObject = a?.let { JSONObject(it) };
-
-//                inputStream?.close()
-//                response?.close()
-
-
-               /* if (jsonObject?.get("Data") != null) {
-                    fun JSONArray.toByteArray(): ByteArray {
-                        val byteArr = ByteArray(length())
-                        for (i in 0 until length()) {
-                            byteArr[i] = (get(i) as Int and 0xFF).toByte()
-                        }
-                        return byteArr
-                    }
-
-                    val jsonArray: ByteArray
-
-                    if (jsonObject.getJSONArray("Data") != null) {
-                        jsonArray = jsonObject.getJSONArray("Data").toByteArray()
-                        FileOutputStream(file).use { outputStream ->
-                            outputStream.write(
-                                jsonArray
-                            )
-                            outputStream.close()
-                            Log.d("End Thread", "End Thread")
-                            Log.d("file", file.absolutePath.toString())
-                            onResult(Result.success(file))
-                        }
-                    }
-                }*/
-//            } else {
-//                onResult(Result.failure(Exception("Không nhận được phản hồi từ server")))
-//            }
         } catch (e: IllegalStateException) {
             val j = IllegalStateException("Không có hồ sơ bệnh án!")
             onResult(Result.failure(j))
-
         } catch (e: OutOfMemoryError) {
             val j = OutOfMemoryError("Hết bộ nhớ !")
             onResult(Result.failure(j))
         } catch (e: JSONException) {
-
             val j = JSONException("Không có hồ sơ bệnh án!")
             onResult(Result.failure(j))
         } catch (e: InterruptedException) {
-
             val i = InterruptedException("Người dùng dừng tải tập tin !")
             onResult(Result.failure(i))
         } catch (e: Exception) {
-            Log.d("e", e.toString())
             val n = Exception("Không nhận được dữ liệu từ server !")
             onResult((Result.failure(n)))
         } finally {
 
         }
-        Log.d("end", "end")
+
     }
 
 
@@ -247,23 +119,17 @@ class HoSoBenhAnRepository(val hoSoBenhAnService: HoSoBenhAnService) {
         val accessToken = retrieveAccessDataDecryptedData(context, "access_token")
 
         accessToken?.let {
-            Log.d("accessToken getLichSuVaoVien", "accessToken: " + accessToken)
             hoSoBenhAnService.getLichSuDieuTriResponse(accessToken, reqVanBanKy)
                 .enqueue(object : Callback<LichSuDieuTriResponse> {
                     override fun onResponse(
                         call: Call<LichSuDieuTriResponse>, response: Response<LichSuDieuTriResponse>
                     ) {
-                        Log.d("getLichSuDieuTriResponse1", "getLichSuDieuTriResponse1")
-
                         if (response.isSuccessful ) {
-
                             val lichSuDieuTriResponse = response.body()
-                            Log.d("getLichSuDieuTriResponse2", "getLichSuDieuTriResponse2")
                             lichSuDieuTriResponse?.let {
                                 onResult(Result.success(it))
                             }
                         } else {
-                            Log.d("getLichSuDieuTriResponse3", "getLichSuDieuTriResponse3")
                             onResult(
                                 Result.failure(
                                     throw UnknownError(
@@ -271,7 +137,6 @@ class HoSoBenhAnRepository(val hoSoBenhAnService: HoSoBenhAnService) {
                                     )
                                 )
                             )
-
                         }
                     }
                     override fun onFailure(call: Call<LichSuDieuTriResponse>, t: Throwable) {

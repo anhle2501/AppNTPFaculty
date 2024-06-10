@@ -8,9 +8,6 @@ data class LoginResponse(
     val data: User
 )
 
-
-
-
 data class User (
     val IPServerGoiLoaTrungTam: Int ,
     val Cancel: Boolean ,

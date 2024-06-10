@@ -19,13 +19,6 @@ class UserRepository (val apiService: UserService) {
     fun userRepositoryProvide():UserRepository {
         return UserRepository(apiService)
     }
-
-//    val retrofit = Retrofit.Builder()
-//        .baseUrl("http://172.16.0.123:8089/api")
-//        .addConverterFactory(GsonConverterFactory.create())
-//        .build()
-//
-//    val apiService = retrofit.create(apiService::class.java)
     fun login(context: Context, username: String, password: String, onResult: (Result<LoginResponse>) -> Unit) {
         val loginData = UserLoginInfo(username, password)
 

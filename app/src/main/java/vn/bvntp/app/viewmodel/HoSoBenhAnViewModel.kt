@@ -43,18 +43,13 @@ class HoSoBenhAnViewModel(
     val listId: LiveData<ArrayList<Int>> = _listId
 
     private lateinit var temp: String
-
     fun getTemp(): String {
         return temp
     }
-
-
     fun setMaVaoVienVaListId(maVaoVien: String, listId: ArrayList<Int>) {
         _maVaoVien.value = maVaoVien
         _listId.value = listId
-
     }
-
     fun toggleIsLockList() {
         _isLockList.value = !_isLockList.value!!
     }
@@ -68,7 +63,6 @@ class HoSoBenhAnViewModel(
     }
 
     fun modelHoSoBenhAnView(context: Context, callBack: () -> Unit) {
-
         viewModelScope.launch {
             _maVaoVien.value?.let {
                 _listId.value?.let { it1 ->

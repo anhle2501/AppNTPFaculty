@@ -128,7 +128,6 @@ fun LoginView(context: Context,
                 modifier = Modifier.fillMaxWidth()
             )
 
-
             LoginButton(
                 onClick = { viewModel.viewLogin(context = context) },
                 modifier = Modifier.fillMaxWidth()

@@ -80,21 +80,14 @@ fun HoSoBenhAnView(
 
         Text(text = "Hồ sơ bệnh án", textAlign = TextAlign.Center, fontSize = 30.sp)
 
-
         val maBenhNhan by hoSoBenhAnViewModel.maBenhNhan.observeAsState(initial = "")
-
         val listId by hoSoBenhAnViewModel.listId.observeAsState(initial = ArrayList())
-
         var active by remember {
             mutableStateOf(false)
         }
-
         val listLichSuDieuTri by hoSoBenhAnViewModel.lichSuDieuTri.observeAsState(initial = emptyList())
-
-
         val isLock by hoSoBenhAnViewModel.isLock.observeAsState(initial = false)
         val focusManager = LocalFocusManager.current
-
         val isLockList by hoSoBenhAnViewModel.isLockList.observeAsState(initial = false)
 
 
@@ -118,7 +111,6 @@ fun HoSoBenhAnView(
                     modifier = Modifier.padding(14.dp).clickable {
                             barcodeLauncher.invoke()
                         },
-
                     )
                 if (maBenhNhan != "") {
                     Icon(
@@ -126,7 +118,6 @@ fun HoSoBenhAnView(
                                 if (maBenhNhan.isNotEmpty()) {
                                     hoSoBenhAnViewModel.updateMaBenhNhan("")
                                 } else {
-
                                     active = false
                                 }
 
@@ -190,14 +181,12 @@ fun HoSoBenhAnView(
                             startIndex = 4, endIndex = 6
                         )
                         ListItem(
-
                             tonalElevation = 1.dp, shadowElevation = 1.dp, headlineContent = {
                                 Text(
                                     textAlign = TextAlign.Center,
                                     text = "Ngày vào viện: $ngayVaoVien / $thangVaoVien / 20$namVaoVien"
                                 )
                             }, modifier = Modifier.padding(10.dp).clickable {
-
                                     hoSoBenhAnViewModel.setMaVaoVienVaListId(
                                         maVaoVien = listLichSuDieuTri[index], listId = listId
                                     )
@@ -206,20 +195,16 @@ fun HoSoBenhAnView(
                                     hoSoBenhAnViewModel.modelHoSoBenhAnView(
                                         context
                                     ) {
-
                                         val intent = Intent(
                                             context, PdfViewer::class.java
                                         )
-
                                         intent.putExtra(
                                             "fileUri", hoSoBenhAnViewModel.getTemp()
                                         )
-
                                         hoSoBenhAnViewModel.toggleIsLockList()
                                         hoSoBenhAnViewModel.toggleIsLock()
                                         context.startActivity(intent)
                                     }
-
                                 })
                     }
                 }

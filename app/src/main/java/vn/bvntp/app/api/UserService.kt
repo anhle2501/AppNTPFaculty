@@ -7,9 +7,6 @@ import vn.bvntp.app.model.LoginResponse
 import vn.bvntp.app.model.UserLoginInfo
 
 interface UserService{
-
     @POST("login")
     fun login(@Body user: UserLoginInfo): Call<LoginResponse>
-
-
 }

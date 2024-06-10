@@ -1,10 +1,6 @@
 package vn.bvntp.app.model
 
-import com.google.gson.annotations.SerializedName
 import org.json.JSONArray
-
-
-data class Test(val Data: ByteArray)
 
 data class RequestVanBanKy(val MaVaoVien: String, val ListId: ArrayList<Int> )
 
