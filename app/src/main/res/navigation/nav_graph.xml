@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/toDieuTriFragment">
+    app:startDestination="@+id/featureFragment">
     <fragment
         android:id="@+id/toDieuTriFragment"
         android:name="vn.bvntp.app.ui.fragment.ToDieuTriFragment"
@@ -14,5 +14,26 @@
         android:name="vn.bvntp.app.ui.fragment.HelpFragment"
         android:label="@string/help_fragment"
         tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/featureFragment"
+        android:name="vn.bvntp.app.ui.fragment.FeatureFragment"
+        android:label="@string/thong_tin_benh_vien"
+        tools:layout="@layout/fragment_feature" >
+        <action
+            android:id="@+id/action_featureFragment_to_toDieuTriFragment"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@animator/slide_out_left"
+            app:popEnterAnim="@animator/slide_in_left"
+            app:popExitAnim="@animator/slide_in_right"
+            app:destination="@id/toDieuTriFragment" />
+        <action
+            android:id="@+id/action_featureFragment_to_hoSoBenhAnFragment"
+            app:destination="@id/hoSoBenhAnFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hoSoBenhAnFragment"
+        android:name="vn.bvntp.app.ui.fragment.HoSoBenhAnFragment"
+        android:label="@string/ho_so_benh_an"
+        tools:layout="@layout/fragment_ho_so_benh_an" />
 
 </navigation>

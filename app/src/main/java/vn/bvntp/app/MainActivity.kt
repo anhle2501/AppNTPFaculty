@@ -39,7 +39,6 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier.fillMaxSize()
                         ){
                         Logo(modifier = Modifier
-//                        .fillMaxSize()
                             .size(300.dp, 300.dp)
                         )
                     }
