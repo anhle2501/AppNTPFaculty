@@ -54,7 +54,7 @@ class FeatureFragment : Fragment() {
         when(code) {
             getString(R.string.to_dieu_tri) -> {
                 ClickHandler.AnimateButtonOnClick(binding.cardViewToDieuTri){
-                    view.findNavController().navigate(R.id.action_featureFragment_to_toDieuTriFragment)
+                    view.findNavController().navigate(R.id.action_featureFragment_to_danhSachToDieuTriFragment)
                 }
             }
 

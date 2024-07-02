@@ -15,4 +15,5 @@
     <string name="fragment_main_image">feature main image</string>
     <string name="hello_blank_fragment">hello_blank_fragment</string>
     <string name="thong_tin_benh_vien">Thông tin bệnh viện</string>
+    <string name="danh_sach_to_dieu_tri">Danh sách tờ điều trị</string>
 </resources>

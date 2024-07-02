@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:inputType="date"
             android:enabled="false"
-            android:text="essssssssssssssssssssssssssssssssss"
+            android:text="ess"
             />
     </com.google.android.material.textfield.TextInputLayout>
 

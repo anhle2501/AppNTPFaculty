@@ -21,7 +21,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorSurface">
+            android:theme="@style/Widget.Design.AppBarLayout">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
@@ -30,30 +30,23 @@
                 />
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            >
+<!--        <androidx.core.widget.NestedScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+<!--            >-->
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/nav_host_fragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/nav_graph" />
 
 
-            <!--        </androidx.core.widget.NestedScrollView>-->
-            <!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
-            <!--            android:id="@+id/bottom_nav"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_gravity="bottom"-->
-            <!--            android:elevation="@dimen/cardview_default_elevation"-->
-            <!--            app:menu="@menu/menu_main" />-->
-        </androidx.core.widget.NestedScrollView>
+<!--        </androidx.core.widget.NestedScrollView>-->
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
