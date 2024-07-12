@@ -1,13 +1,11 @@
 package vn.bvntp.app.model
 
-import java.time.LocalDateTime
-
 data class ToDieuTri(
     val MAICD:String,
     val CHANDOAN:String,
     val ID: String,
     val MABS: String,
-    val NGAY: LocalDateTime,
+    val NGAY: String,
     val DIENBIEN: String,
     val DIENBIENTUDO: String,
     val BSDIENBIEN: String,
@@ -45,4 +43,14 @@ data class ToDieuTri(
     val DIENBIENMOI: String,
     val YKHAC: Boolean,
     val CHONINMOI: Boolean
+)
+
+data class ToDieuTriRequest(
+    val MaQL: String
+)
+
+data class ToDieuTriResponse(
+    val success: Boolean,
+    val message: String,
+    val data: ArrayList<ToDieuTri>,
 )

@@ -2,15 +2,15 @@ package vn.bvntp.app.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider.Factory
-import vn.bvntp.app.repository.HoSoBenhAnRepository
+import vn.bvntp.app.repository.ThongTinBenhNhanRepository
 
 
-class HoSoBenhAnViewModelFactory(val hsbaRepository: HoSoBenhAnRepository) : Factory {
+class ThongTinBenhNhanViewModelFactory(val thongTinBenhNhanRep: ThongTinBenhNhanRepository) : Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
-        if (modelClass.isAssignableFrom(HoSoBenhAnViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(ThongTinBenhNhanViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return HoSoBenhAnViewModel(hsbaRepository ) as T
+            return ThongTinBenhNhanViewModel(thongTinBenhNhanRep ) as T
         }
 
         throw UnsupportedOperationException(

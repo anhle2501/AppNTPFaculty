@@ -5,7 +5,7 @@
     android:id="@+id/nav_graph"
     app:startDestination="@+id/featureFragment">
     <fragment
-        android:id="@+id/toDieuTriFragment"
+        android:id="@+id/toDieuTri"
         android:name="vn.bvntp.app.ui.fragment.ToDieuTriFragment"
         android:label="@string/to_dieu_tri"
         tools:layout="@layout/fragment_to_dieu_tri" />
@@ -21,20 +21,35 @@
         tools:layout="@layout/fragment_feature" >
         <action
             android:id="@+id/action_featureFragment_to_hoSoBenhAnFragment"
-            app:destination="@id/hoSoBenhAnFragment" />
+            app:destination="@id/hoSoBenhAn" />
         <action
             android:id="@+id/action_featureFragment_to_danhSachToDieuTriFragment"
-            app:destination="@id/danhSachToDieuTriFragment" />
+            app:destination="@id/danhSachToDieuTri" />
+        <action
+            android:id="@+id/action_featureFragment_to_patientInfoFragment"
+            app:destination="@id/patientInfo" />
+        <action
+            android:id="@+id/action_featureFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
     </fragment>
     <fragment
-        android:id="@+id/hoSoBenhAnFragment"
+        android:id="@+id/hoSoBenhAn"
         android:name="vn.bvntp.app.ui.fragment.HoSoBenhAnFragment"
         android:label="@string/ho_so_benh_an"
         tools:layout="@layout/fragment_ho_so_benh_an" />
     <fragment
-        android:id="@+id/danhSachToDieuTriFragment"
+        android:id="@+id/danhSachToDieuTri"
         android:name="vn.bvntp.app.ui.fragment.DanhSachToDieuTriFragment"
         android:label="@string/danh_sach_to_dieu_tri"
-        tools:layout="@layout/fragment_danh_sach_to_dieu_tri" />
+        tools:layout="@layout/fragment_danh_sach_to_dieu_tri" >
+        <action
+            android:id="@+id/action_danhSachToDieuTriFragment_to_toDieuTriFragment"
+            app:destination="@id/toDieuTri" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientInfo"
+        android:name="vn.bvntp.app.ui.fragment.PatientInfoFragment"
+        android:label="@string/thong_tin_tai_khoan"
+        tools:layout="@layout/fragment_thong_tin_benh_nhan" />
 
 </navigation>

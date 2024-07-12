@@ -16,4 +16,14 @@
     <string name="hello_blank_fragment">hello_blank_fragment</string>
     <string name="thong_tin_benh_vien">Thông tin bệnh viện</string>
     <string name="danh_sach_to_dieu_tri">Danh sách tờ điều trị</string>
+    <string name="click_to_open_input_view">Click to open input view</string>
+    <string name="nhap_ma_benh_nhan">Nhập hoặc quét mã bệnh nhân</string>
+    <string name="nhap_quet_ma_benh_nhan">Nhập/quét mã bệnh nhân</string>
+    <string name="tinh_nang">Tính năng</string>
+    <string name="thong_tin_tai_khoan">Thông tin tài khoản</string>
+    <string name="thoat">Thoát</string>
+    <string name="y_lenh">Y lệnh</string>
+    <string name="dien_bien">Diễn biến</string>
+    <string name="bac_si">Bác sĩ</string>
+    <string name="ngay">Ngày</string>
 </resources>

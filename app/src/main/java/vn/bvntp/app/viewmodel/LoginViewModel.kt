@@ -1,33 +1,16 @@
 package vn.bvntp.app.viewmodel
 
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.widget.Toast
-import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
-import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.CreationExtras
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import androidx.savedstate.SavedStateRegistryOwner
-
 import kotlinx.coroutines.launch
-import vn.bvntp.app.MainActivity
 import vn.bvntp.app.model.UserLoginInfo
-import vn.bvntp.app.network.RetrofitClient
 import vn.bvntp.app.repository.UserRepository
-import vn.bvntp.app.ui.activity.LoginActivity
 
 
 enum class LoginStatus{ Success, Failed, NotYetLogin}
@@ -35,8 +18,6 @@ enum class LoginStatus{ Success, Failed, NotYetLogin}
 class LoginViewModel(
     val repository: UserRepository,
 ): ViewModel() {
-
-
 
     val isLogin = MutableLiveData(LoginStatus.NotYetLogin)
     val loginMessage = MutableLiveData("")

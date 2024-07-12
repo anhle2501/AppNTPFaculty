@@ -23,7 +23,6 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStreamReader
 import java.io.Reader
-import java.lang.IllegalStateException
 import java.util.concurrent.TimeUnit
 
 
@@ -57,7 +56,7 @@ class HoSoBenhAnRepository(val hoSoBenhAnService: HoSoBenhAnService) {
             val call = client.newCall(request)
             val response = call.execute().body
             val buffer = 2048
-            val jsonString = BufferedInputStream( response?.byteStream(), buffer )
+            val jsonString = BufferedInputStream(response?.byteStream(), buffer)
             val reader: Reader = InputStreamReader(jsonString, "UTF-8")
 
             val readerJsonReader = JsonReader(reader)
@@ -124,8 +123,9 @@ class HoSoBenhAnRepository(val hoSoBenhAnService: HoSoBenhAnService) {
                     override fun onResponse(
                         call: Call<LichSuDieuTriResponse>, response: Response<LichSuDieuTriResponse>
                     ) {
-                        if (response.isSuccessful ) {
+                        if (response.isSuccessful) {
                             val lichSuDieuTriResponse = response.body()
+                            Log.d("lichSuDieuTriResponse", lichSuDieuTriResponse.toString())
                             lichSuDieuTriResponse?.let {
                                 onResult(Result.success(it))
                             }
@@ -139,14 +139,11 @@ class HoSoBenhAnRepository(val hoSoBenhAnService: HoSoBenhAnService) {
                             )
                         }
                     }
+
                     override fun onFailure(call: Call<LichSuDieuTriResponse>, t: Throwable) {
                         onResult(Result.failure(throw UnknownError("Unknown error")))
                     }
-
                 })
         }
-
-
     }
-
 }

@@ -133,7 +133,7 @@ fun HoSoBenhAnView(
                 if (vn.bvntp.app.helper.Validator.isMaBenhNhanValid(maBenhNhan)) {
                     hoSoBenhAnViewModel.toggleIsLock()
                     hoSoBenhAnViewModel.updateMaBenhNhan(maBenhNhan)
-                    hoSoBenhAnViewModel.modelLichSuVaoVienView(context)
+                    hoSoBenhAnViewModel.modelLichSuVaoVienView(context, {})
                     focusManager.clearFocus()
 
                 } else {

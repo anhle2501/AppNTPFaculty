@@ -3,6 +3,13 @@
     <style name="Base.Theme.AppNTP" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primaryLight</item>
+
+
+    </style>
+
+    <style name="Widget.NavigationView" parent="Widget.Design.NavigationView">
+        <item name="itemIconTint">@color/primaryLight</item>
     </style>
 
     <style name="Theme.AppNTP" parent="Base.Theme.AppNTP" />

@@ -1,16 +1,15 @@
 package vn.bvntp.app.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider.Factory
-import vn.bvntp.app.repository.HoSoBenhAnRepository
+import androidx.lifecycle.ViewModelProvider
+import vn.bvntp.app.repository.ToDieuTriRepository
 
-
-class HoSoBenhAnViewModelFactory(val hsbaRepository: HoSoBenhAnRepository) : Factory {
+class ToDieuTriViewModelFactory(val toDieuTriRepository: ToDieuTriRepository): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
-        if (modelClass.isAssignableFrom(HoSoBenhAnViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(ToDieuTriViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return HoSoBenhAnViewModel(hsbaRepository ) as T
+            return ToDieuTriViewModel(toDieuTriRepository ) as T
         }
 
         throw UnsupportedOperationException(
@@ -18,6 +17,4 @@ class HoSoBenhAnViewModelFactory(val hsbaRepository: HoSoBenhAnRepository) : Fac
                     "`CreationExtras` to be passed into `create` method."
         )
     }
-
-
 }

@@ -10,4 +10,12 @@
         app:showAsAction="always"
         >
     </item>
+    <item
+        android:id="@+id/logout"
+        android:title="@string/help_fragment"
+        android:label="@string/thoat"
+        android:icon="@drawable/baseline_logout_24"
+        app:showAsAction="always"
+        >
+    </item>
 </menu>

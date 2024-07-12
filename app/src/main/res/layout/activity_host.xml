@@ -5,77 +5,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.activity.HostActivity"
     >
+    <data
+        >
+        <import type="android.view.View" />
+        <variable
+            name="hsbaViewModel"
+            type="vn.bvntp.app.viewmodel.HoSoBenhAnViewModel" />
 
+        <variable
+            name="loginViewModel"
+            type="vn.bvntp.app.viewmodel.LoginViewModel" />
+
+    </data>
 
 <androidx.drawerlayout.widget.DrawerLayout
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
   >
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical">
+        >
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/Widget.Design.AppBarLayout">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                />
         </com.google.android.material.appbar.AppBarLayout>
 
-<!--        <androidx.core.widget.NestedScrollView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-<!--            >-->
+        <!--        <androidx.core.widget.NestedScrollView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--            >-->
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/nav_host_fragment"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                app:defaultNavHost="true"
-                app:navGraph="@navigation/nav_graph" />
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_anchor="@+id/appBarLayout"
+            android:background="@color/White"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_anchorGravity="center" />
 
 
-<!--        </androidx.core.widget.NestedScrollView>-->
+        <!--        </androidx.core.widget.NestedScrollView>-->
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_head"
-        app:menu="@menu/side_menu">
-
-    </com.google.android.material.navigation.NavigationView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <!-- EditText initially hidden -->
-        <EditText
-            android:id="@+id/ma_benh_nhan_input"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:hint="Enter text"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fab" />
+        android:layout_height="match_parent"
+        android:visibility="visible">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
@@ -86,16 +80,147 @@
             android:layout_marginEnd="60dp"
             android:layout_marginBottom="4dp"
             android:alpha="1"
+            android:contentDescription="@string/click_to_open_input_view"
             android:src="@drawable/baseline_person_add_24"
             android:stateListAnimator="@android:anim/fade_out"
+            android:visibility="visible"
             app:fabCustomSize="60dp"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:maxImageSize="40dp"
             app:tint="@android:color/holo_blue_dark" />
+
+
+        <!-- EditText initially hidden -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scan_patient_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/semi_transparent_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{(hsbaViewModel.maBenhNhan != &quot;&quot; &amp;&amp; hsbaViewModel.maBenhNhan.length == 8 ) ? View.GONE : View.VISIBLE}"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+
+            <LinearLayout
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+                <ImageView
+                    android:id="@+id/close_nhap_ma_benh_nhan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/White"
+                    android:src="@drawable/close_50"
+                    />
+                <ImageView
+                    android:id="@+id/quet_nhap_ma_benh_nhan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/White"
+                    android:src="@drawable/photo_camera"
+                    android:visibility="@{ hsbaViewModel.maBenhNhan.length == 8 ? View.GONE : View.VISIBLE }"
+
+                    />
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+                        <ImageView
+                            android:id="@+id/enter_nhap_ma_benh_nhan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/White"
+                            android:src="@drawable/check_50"
+                            android:visibility="@{ hsbaViewModel.maBenhNhan.length == 8 ? View.VISIBLE : View.GONE }"
+                            />
+                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:indeterminate="true"
+                            app:indicatorColor="@color/Green"
+                            android:visibility="@{ !hsbaViewModel._isLoading &amp;&amp; hsbaViewModel._maBenhNhan.length == 8 ? View.VISIBLE : View.GONE }"
+                            />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:minHeight="50dp"
+                    android:layout_marginEnd="20dp"
+                    android:padding="4dp"
+                    app:boxCornerRadiusTopEnd="5dp"
+                    app:boxCornerRadiusTopStart="5dp"
+                    app:boxCornerRadiusBottomEnd="5dp"
+                    app:boxCornerRadiusBottomStart="5dp"
+                    android:background="@color/White"
+                    android:hint="@string/nhap_quet_ma_benh_nhan"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="8"
+                    app:counterOverflowTextColor="@color/Red"
+                    app:endIconMode="clear_text"
+
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ma_benh_nhan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:maxLength="8"
+                        android:textSize="20sp"
+                        android:text="@={hsbaViewModel._maBenhNhan}"
+                    />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_head"
+        app:menu="@menu/side_menu">
+
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>
 </layout>
 

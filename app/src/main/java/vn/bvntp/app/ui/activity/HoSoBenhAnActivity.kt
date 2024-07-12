@@ -7,13 +7,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModelProvider
 import com.example.ntp_app.ui.theme.AppNTPTheme
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
 import vn.bvntp.app.App
-import vn.bvntp.app.ui.view.HoSoBenhAnView
 import vn.bvntp.app.viewmodel.HoSoBenhAnViewModel
 
 class HoSoBenhAnActivity: ComponentActivity() {
@@ -48,7 +46,7 @@ class HoSoBenhAnActivity: ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colorScheme.background
                 ){
-                        HoSoBenhAnView(LocalContext.current, viewModel, barcodeLauncherWithOption)
+//                        HoSoBenhAnView(LocalContext.current, viewModel, barcodeLauncherWithOption)
                 }
             }
         }

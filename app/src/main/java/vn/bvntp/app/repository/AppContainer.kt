@@ -1,12 +1,10 @@
 package vn.bvntp.app.repository
 
-import androidx.lifecycle.SavedStateHandle
-import vn.bvntp.app.helper.Validator
 import vn.bvntp.app.network.RetrofitClient
-import vn.bvntp.app.repository.UserRepository
-import vn.bvntp.app.viewmodel.HoSoBenhAnViewModel
 import vn.bvntp.app.viewmodel.HoSoBenhAnViewModelFactory
 import vn.bvntp.app.viewmodel.LoginViewModelFactory
+import vn.bvntp.app.viewmodel.ThongTinBenhNhanViewModelFactory
+import vn.bvntp.app.viewmodel.ToDieuTriViewModelFactory
 
 // Container of objects shared across the whole app
 class AppContainer {
@@ -22,6 +20,15 @@ class AppContainer {
     val hsbaRep  = HoSoBenhAnRepository(hoSoBenhAnService)
     val hsbaViewModelFactory = HoSoBenhAnViewModelFactory(hsbaRep)
 
+    // thông tin bệnh nhân
+    val thongTinBenhNhanService = RetrofitClient.provideThongTinBenhNhanService()
+    val thongTinBenhNhanRepo = ThongTinBenhNhanRepository(thongTinBenhNhanService)
+    val thongTinBenhNhanFactory = ThongTinBenhNhanViewModelFactory(thongTinBenhNhanRepo)
+
+    // Tờ điều trị
+    val toDieuTriService = RetrofitClient.provideToDieuTriService()
+    val toDieuTriRepo = ToDieuTriRepository(toDieuTriService)
+    val toDieuTriFactory = ToDieuTriViewModelFactory(toDieuTriRepo)
     // Validator
 //    val validator = Validator();
 }

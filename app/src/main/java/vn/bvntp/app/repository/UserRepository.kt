@@ -1,9 +1,7 @@
 package vn.bvntp.app.repository
 
 
-import android.app.Application
 import android.content.Context
-import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -11,7 +9,6 @@ import vn.bvntp.app.api.UserService
 import vn.bvntp.app.helper.storeEncryptedData
 import vn.bvntp.app.model.LoginResponse
 import vn.bvntp.app.model.UserLoginInfo
-import vn.bvntp.app.ui.activity.LoginActivity
 
 
 class UserRepository (val apiService: UserService) {
@@ -32,10 +29,11 @@ class UserRepository (val apiService: UserService) {
 
                         if (accessToken != null) {
                             storeEncryptedData(context, "access_token", accessToken)
-                            storeEncryptedData(context, "body", body.toString())
+                            if (body != null) {
+                                storeEncryptedData(context, "ten_bac_si", body.data.TenBacSi)
+                                storeEncryptedData(context, "user_name", body.data.UserName)
+                            }
                         }
-                        Log.d("accessToken", "accessToken: " + accessToken)
-
                     }
 
                     // body info

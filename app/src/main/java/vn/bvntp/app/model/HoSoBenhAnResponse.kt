@@ -22,7 +22,7 @@ data class LichSuDieuTriResponse(
 
 data class ThongTinVaoVien(
     val MAVAOVIEN: String,
-    val MAQL: Number,
+    val MAQL: String,
     val MACHUYENDEN: Number,
     val LOAIBA: Number,
     val IDKHOAPHONG: Number,
@@ -42,3 +42,4 @@ data class ThongTinVaoVien(
     val TRANGTHAI: String,
     val DONE: Number
 )
+

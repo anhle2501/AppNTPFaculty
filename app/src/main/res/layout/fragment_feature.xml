@@ -4,9 +4,14 @@
 
     >
     <data>
+        <import type="android.view.View" />
         <variable
             name="navigateTo"
             type="vn.bvntp.app.ui.fragment.FeatureFragment" />
+
+        <variable
+            name="thongTinBenhNhanViewModel"
+            type="vn.bvntp.app.viewmodel.ThongTinBenhNhanViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -15,120 +20,245 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/helpFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minHeight="2000dp"
-    android:orientation="vertical"
-    tools:context=".ui.fragment.HelpFragment">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_weight="0.5"
-        android:contentDescription="@string/fragment_main_image"
-        android:padding="16dp"
-        android:src="@drawable/ntp_logo_trim"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_weight="0.5">-->
-
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:id="@+id/cardView3"-->
-<!--            android:layout_width="120dp"-->
-<!--            android:layout_height="120dp"-->
-<!--            android:layout_marginStart="12dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/cardViewHoSoBenhAn"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-<!--    -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewToDieuTri"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="12dp"
-        android:animateLayoutChanges="true"
-        android:onClick="@{() -> navigateTo.goToFeature(@string/to_dieu_tri)}"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/helpFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:minHeight="600dp"
+            tools:context=".ui.fragment.HelpFragment">
 
-            >
-
-            <ImageView
-                android:id="@+id/imageViewToDieutri"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:src="@drawable/to_dieu_tri" />
-
-            <TextView
-                android:id="@+id/featureToDieuTri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0"
-                android:padding="8dp"
-                android:text="@string/to_dieu_tri"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewHoSoBenhAn"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="12dp"
-        android:animateLayoutChanges="true"
-        android:onClick="@{() -> navigateTo.goToFeature(@string/ho_so_benh_an)}"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="8dp"
-        app:layout_constraintStart_toEndOf="@+id/cardViewToDieuTri"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageViewBenhAnDienTu"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:src="@drawable/ho_so_benh_an" />
+                android:id="@+id/imageView"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="0.5"
+                android:contentDescription="@string/fragment_main_image"
+                android:padding="16dp"
+                android:src="@drawable/ntp_logo_trim"
+                android:visibility="@{thongTinBenhNhanViewModel.thongTinBenhNhan != null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/featureBenhAnDienTu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0"
-                android:padding="8dp"
-                android:text="@string/ho_so_benh_an"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:visibility="@{thongTinBenhNhanViewModel.thongTinBenhNhan == null ? View.GONE : View.VISIBLE}"
+                android:id="@+id/thongTinBenhNhan"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/AliceBlue"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.cardview.widget.CardView>
+                <LinearLayout
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_width="400dp"
+                    android:layout_height="400dp"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tvHoTen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:labelFor="@+id/tvHoTen"
+                        android:text="@{`Họ tên: ` + thongTinBenhNhanViewModel.thongTinBenhNhan.HOTEN}"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGioiTinh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@{`Giới tính: ` + thongTinBenhNhanViewModel.thongTinBenhNhan.GIOITINH}"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvNamSinh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@{`Năm sinh: ` + thongTinBenhNhanViewModel.thongTinBenhNhan.NAMSINH}"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvDoiTuong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@{`Đối tượng: ` + thongTinBenhNhanViewModel.thongTinBenhNhan.DOITUONG}"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvMaBN"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@{`Mã bệnh nhân: ` + thongTinBenhNhanViewModel.thongTinBenhNhan.MABN}"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvNgaySinh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@{`Ngày sinh: ` + thongTinBenhNhanViewModel.thongTinBenhNhan.NGAYSINH}"
+                        android:textSize="20sp" />
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tgVaoVien"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginBottom="4dp"-->
+<!--                        android:text="@{`TG vào viện :` + thongTinBenhNhanViewModel.thongTinBenhNhan.TGRAVIEN}"-->
+<!--                        android:textSize="14sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tgRaVien"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginBottom="4dp"-->
+<!--                        android:text="@{`TG ra viện: ` + thongTinBenhNhanViewModel.thongTinBenhNhan.TGRAVIEN}"-->
+<!--                        android:textSize="14sp" />-->
+
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/khoaDieuTri"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginBottom="4dp"-->
+<!--                        android:text="@{`Khoa điều trị: ` + thongTinBenhNhanViewModel.thongTinBenhNhan.KHOADIEUTRI}"-->
+<!--                        android:textSize="14sp" />-->
+
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/khoaKetThuc"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginBottom="4dp"-->
+<!--                        android:text="@{`Khoa kết thúc: ` + thongTinBenhNhanViewModel.thongTinBenhNhan.KHOAKETTHUC}"-->
+<!--                        android:textSize="14sp" />-->
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="0dp"-->
+            <!--        android:layout_weight="0.5">-->
+
+            <!--        <androidx.cardview.widget.CardView-->
+            <!--            android:id="@+id/cardView3"-->
+            <!--            android:layout_width="120dp"-->
+            <!--            android:layout_height="120dp"-->
+            <!--            android:layout_marginStart="12dp"-->
+            <!--            android:layout_marginTop="16dp"-->
+            <!--            app:layout_constraintStart_toEndOf="@+id/cardViewHoSoBenhAn"-->
+            <!--            app:layout_constraintTop_toTopOf="parent" />-->
+            <!--    -->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewToDieuTri"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="430dp"
+                android:layout_marginEnd="12dp"
+                android:animateLayoutChanges="true"
+                android:onClick="@{() -> navigateTo.goToFeature(@string/to_dieu_tri)}"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/cardViewHoSoBenhAn"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/imageViewToDieutri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:src="@drawable/to_dieu_tri" />
+
+                    <TextView
+                        android:id="@+id/featureToDieuTri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="0"
+                        android:padding="8dp"
+                        android:text="@string/to_dieu_tri"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewHoSoBenhAn"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="430dp"
+                android:layout_marginEnd="12dp"
+                android:animateLayoutChanges="true"
+                android:onClick="@{() -> navigateTo.goToFeature(@string/ho_so_benh_an)}"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cardViewToDieuTri"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageViewBenhAnDienTu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:src="@drawable/ho_so_benh_an" />
+
+                    <TextView
+                        android:id="@+id/featureBenhAnDienTu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="0"
+                        android:padding="8dp"
+                        android:text="@string/ho_so_benh_an"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 </layout>

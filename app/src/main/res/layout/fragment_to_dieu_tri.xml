@@ -5,10 +5,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/toDieuTriFragment"
+    android:id="@+id/toDieuTri"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.fragment.ToDieuTriFragment">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -24,7 +23,7 @@
             android:layout_height="wrap_content"
             android:inputType="date"
             android:enabled="false"
-            android:text="ess"
+            android:text=""
             />
     </com.google.android.material.textfield.TextInputLayout>
 

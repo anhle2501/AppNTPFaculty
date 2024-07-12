@@ -1,12 +1,14 @@
 package vn.bvntp.app.network
 
 
+//import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
-//import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import vn.bvntp.app.api.HoSoBenhAnService
+import vn.bvntp.app.api.ThongTinBenhNhanService
+import vn.bvntp.app.api.ToDieuTriService
 import vn.bvntp.app.api.UserService
 
 object RetrofitClient {
@@ -20,7 +22,7 @@ object RetrofitClient {
             .build()
 
         Retrofit.Builder()
-        .baseUrl("http://115.75.5.67:8089/api/")
+        .baseUrl("http://bvntp.com:8089/api/")
         .addConverterFactory(GsonConverterFactory.create())
              .client(client)
         .build()
@@ -33,6 +35,13 @@ object RetrofitClient {
     val HoSoBenhAnService by lazy {
         retrofit.create(HoSoBenhAnService::class.java)
     }
+    val ThongTinBenhNhanService by lazy {
+        retrofit.create(ThongTinBenhNhanService::class.java)
+    }
+
+    val ToDieuTriService by lazy {
+        retrofit.create(ToDieuTriService::class.java)
+    }
 
     fun provideUserService(): UserService {
         var service = userService
@@ -41,6 +50,16 @@ object RetrofitClient {
 
     fun provideHoSoBenhAnService(): HoSoBenhAnService {
         var service = HoSoBenhAnService
+        return service
+    }
+
+    fun provideThongTinBenhNhanService(): ThongTinBenhNhanService {
+        var service = ThongTinBenhNhanService
+        return service
+    }
+
+    fun provideToDieuTriService(): ToDieuTriService {
+        var service = ToDieuTriService
         return service
     }
 }

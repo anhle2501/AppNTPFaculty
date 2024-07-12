@@ -1,14 +1,21 @@
 package vn.bvntp.app.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import vn.bvntp.app.App
 import vn.bvntp.app.R
 import vn.bvntp.app.databinding.FragmentFeatureBinding
 import vn.bvntp.app.helper.ClickHandler
+import vn.bvntp.app.viewmodel.HoSoBenhAnViewModel
+import vn.bvntp.app.viewmodel.ThongTinBenhNhanViewModel
 
 class FeatureFragment : Fragment() {
 
@@ -22,6 +29,9 @@ class FeatureFragment : Fragment() {
 
     private var _binding: FragmentFeatureBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var hsbaViewModel: HoSoBenhAnViewModel
+    private lateinit var thongTinBenhNhanViewModel: ThongTinBenhNhanViewModel
 
 
     override fun onCreateView(
@@ -41,6 +51,28 @@ class FeatureFragment : Fragment() {
         val view = binding.root
 
         binding.navigateTo = this
+        binding.lifecycleOwner = viewLifecycleOwner
+        val appContainer = (requireActivity().applicationContext as App).container
+
+        // get maBenhNhan
+        hsbaViewModel = ViewModelProvider(requireActivity(), appContainer.hsbaViewModelFactory).get(
+            HoSoBenhAnViewModel::class.java)
+        thongTinBenhNhanViewModel =  ViewModelProvider(requireActivity(), appContainer.thongTinBenhNhanFactory).get(
+            ThongTinBenhNhanViewModel::class.java)
+
+        binding.thongTinBenhNhanViewModel = thongTinBenhNhanViewModel
+//        binding.hsbaViewModel = hsbaViewModel
+
+
+
+
+        thongTinBenhNhanViewModel.thongTinBenhNhan.observe(viewLifecycleOwner, Observer {
+//            binding.tvHoTen.text = it.HOTEN
+            Log.d("hsbaViewModel feature", hsbaViewModel.maBenhNhan.value.toString())
+        })
+
+
+
 
         return view
     }
@@ -54,13 +86,21 @@ class FeatureFragment : Fragment() {
         when(code) {
             getString(R.string.to_dieu_tri) -> {
                 ClickHandler.AnimateButtonOnClick(binding.cardViewToDieuTri){
-                    view.findNavController().navigate(R.id.action_featureFragment_to_danhSachToDieuTriFragment)
+                    if (hsbaViewModel.maBenhNhan.value != "")
+                        view.findNavController().navigate(R.id.action_featureFragment_to_danhSachToDieuTriFragment)
+                    else
+                        Toast.makeText(context, "Vui lòng nhập mã bệnh nhân", Toast.LENGTH_LONG).show()
                 }
             }
 
             getString(R.string.ho_so_benh_an) -> {
                 ClickHandler.AnimateButtonOnClick(binding.cardViewHoSoBenhAn){
-                    view.findNavController().navigate(R.id.action_featureFragment_to_hoSoBenhAnFragment)
+                    if (hsbaViewModel.maBenhNhan.value != "")
+                        view.findNavController().navigate(R.id.action_featureFragment_to_hoSoBenhAnFragment)
+                    else
+                        Toast.makeText(context, "Vui lòng nhập mã bệnh nhân", Toast.LENGTH_LONG).show()
+
+
                 }
             }
         }

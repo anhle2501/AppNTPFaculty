@@ -6,24 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import vn.bvntp.app.R
-import vn.bvntp.app.databinding.FragmentToDieuTriBinding
 
-class ToDieuTriFragment : Fragment() {
-
-    private var _binding: FragmentToDieuTriBinding? = null
-    private val binding get() = _binding!!
+/**
+ * A simple [Fragment] subclass.
+ * Use the [PatientInfoFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class PatientInfoFragment : Fragment() {
+    // TODO: Rename and change types of parameters
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-        val view = inflater.inflate(R.layout.fragment_to_dieu_tri, container, false)
-//        val navigation = view.findNavController();
-
-
-        return view
+        return inflater.inflate(R.layout.fragment_thong_tin_benh_nhan, container, false)
     }
 
 

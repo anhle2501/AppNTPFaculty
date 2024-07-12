@@ -1,14 +1,49 @@
-<androidx.recyclerview.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/danh_sach_to_dieu_tri"
-    android:name="vn.bvntp.app.ui.fragment.DanhSachToDieuTriFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="toDieuTriViewModel"
+            type="vn.bvntp.app.viewmodel.ToDieuTriViewModel" />
+    </data>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:gravity="top"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:context=".ui.fragment.DanhSachToDieuTriFragment"
-    tools:listitem="@layout/fragment_to_dieu_tri_item"
-    />
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    >
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loadingIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:indeterminate="true"
+        app:indicatorColor="@color/primaryLight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/danhSachToDieuTri"
+        android:name="vn.bvntp.app.ui.fragment.DanhSachToDieuTriFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="top"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:context=".ui.fragment.DanhSachToDieuTriFragment"
+        tools:layout_editor_absoluteY="521dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

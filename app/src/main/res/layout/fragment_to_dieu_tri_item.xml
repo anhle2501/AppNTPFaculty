@@ -1,59 +1,78 @@
 <layout>
 
-    <com.google.android.material.card.MaterialCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <data>
+
+        <variable
+            name="toDieuTriViewModel"
+            type="vn.bvntp.app.viewmodel.ToDieuTriViewModel" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/material_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="true"
+        android:layout_margin="8dp"
+        android:animateLayoutChanges="true"
         android:clickable="true"
         android:clipChildren="true"
-        android:layout_margin="8dp"
+        android:focusable="true"
         app:cardElevation="4dp"
-        android:animateLayoutChanges="true"
         app:layout_constraintTop_toTopOf="parent">
-<!--        collapse view -->
+        <!--        collapse view -->
         <LinearLayout
             android:id="@+id/close_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animationCache="true"
             android:orientation="vertical"
             android:padding="16dp"
-            android:visibility="visible"
-            android:animationCache="true"
-            >
+            android:visibility="visible">
 
-        <TextView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view_ngay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            android:text="Ngày"
-            />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/AliceBlue">
 
-        <TextView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            android:text="Bác sĩ"
-            />
-        <TextView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/ngay1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ngay"
+                        android:textAppearance="?attr/textAppearanceTitleMedium" />
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            android:text="Bệnh"
-            />
+                    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/bacSi1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bac_si"
+                        android:textAppearance="?attr/textAppearanceTitleMedium" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/AliceBlue">
+            <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dienbien1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/dien_bien"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
-<!--        expand view-->
+        <!--        expand view-->
         <LinearLayout
             android:id="@+id/expandable_view"
             android:layout_width="match_parent"
@@ -62,51 +81,70 @@
             android:padding="16dp"
             android:visibility="gone">
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/AliceBlue">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/ngay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ngay"
+                        android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+                    <TextView
+                        android:id="@+id/bacSi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bac_si"
+                        android:textAppearance="?attr/textAppearanceTitleMedium" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/AliceBlue"
+                >
             <TextView
+                android:id="@+id/dienbien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:text="Ngày"
-                />
-
+                android:padding="16dp"
+                android:text="@string/dien_bien"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/AliceBlue"
+                >
             <TextView
-
+                android:id="@+id/yLenh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:text="Bác sĩ"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:text="Bệnh"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:text="Bệnh"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:text="Bệnh"
-                />
-
-
-
-
+                android:inputType="textMultiLine"
+                android:padding="16dp"
+                android:text="@string/y_lenh"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
-            <ImageButton
-                android:id="@+id/expand_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_gravity="bottom|end"
-                android:background="?attr/selectableItemBackground"
-                android:src="@drawable/baseline_arrow_drop_down_24" />
+
+        <ImageButton
+            android:id="@+id/expand_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/baseline_arrow_drop_down_24" />
 
     </com.google.android.material.card.MaterialCardView>
 

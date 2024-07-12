@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="50dp" android:height="50dp"
+        android:fillColor="#FF2799FF"
+        android:drawable="@drawable/baseline_close_24" />
+</layer-list>
