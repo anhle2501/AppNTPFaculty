@@ -1,6 +1,7 @@
 package vn.bvntp.app.repository
 
 import vn.bvntp.app.network.RetrofitClient
+import vn.bvntp.app.viewmodel.DsHienDienViewModelFactory
 import vn.bvntp.app.viewmodel.HoSoBenhAnViewModelFactory
 import vn.bvntp.app.viewmodel.LoginViewModelFactory
 import vn.bvntp.app.viewmodel.ThongTinBenhNhanViewModelFactory
@@ -29,6 +30,12 @@ class AppContainer {
     val toDieuTriService = RetrofitClient.provideToDieuTriService()
     val toDieuTriRepo = ToDieuTriRepository(toDieuTriService)
     val toDieuTriFactory = ToDieuTriViewModelFactory(toDieuTriRepo)
+
+    // Ds hien dien
+    val dsHienDienService = RetrofitClient.provideDsHienDienService()
+    val dsHienDienRepo = DanhSachHienDienRepository(dsHienDienService)
+    val dsHienDienFactory = DsHienDienViewModelFactory(dsHienDienRepo)
+
     // Validator
 //    val validator = Validator();
 }

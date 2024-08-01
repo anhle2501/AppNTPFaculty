@@ -23,5 +23,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AppNTP"
+rootProject.name = "AppNTPFaculty"
 include(":app")

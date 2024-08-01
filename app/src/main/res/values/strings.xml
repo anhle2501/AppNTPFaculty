@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppNTP</string>
+    <string name="app_name">AppNTPFaculty</string>
     <string name="bvntp">Bệnh viện Nguyễn Tri Phương</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_pdf_viewer">PdfViewerActivity</string>

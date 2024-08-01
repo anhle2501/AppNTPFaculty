@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import vn.bvntp.app.api.DanhSachHienDienService
 import vn.bvntp.app.api.HoSoBenhAnService
 import vn.bvntp.app.api.ThongTinBenhNhanService
 import vn.bvntp.app.api.ToDieuTriService
@@ -43,6 +44,10 @@ object RetrofitClient {
         retrofit.create(ToDieuTriService::class.java)
     }
 
+    val DsHienDienService by lazy {
+        retrofit.create(DanhSachHienDienService::class.java)
+    }
+
     fun provideUserService(): UserService {
         var service = userService
         return service
@@ -60,6 +65,11 @@ object RetrofitClient {
 
     fun provideToDieuTriService(): ToDieuTriService {
         var service = ToDieuTriService
+        return service
+    }
+
+    fun provideDsHienDienService(): DanhSachHienDienService {
+        var service = DsHienDienService
         return service
     }
 }
